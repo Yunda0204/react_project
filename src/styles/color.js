@@ -16,6 +16,6 @@ export const buttonColor = {
   danger: [color.danger, '#fff'],
   warning: [color.warning, '#212529'],
   info: [color.info, '#fff'],
-  light: [color.light, '#fff'],
+  light: [color.light, '#212529'],
   dark: [color.dark, '#fff'],
 };

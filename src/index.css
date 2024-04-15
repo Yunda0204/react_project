@@ -35,5 +35,6 @@ img {
 .layout-width {
   max-width: 1200px;
   min-width: 1000px;
-  margin: 0 auto;
+  margin: 0 auto; 
 }
+/* */
