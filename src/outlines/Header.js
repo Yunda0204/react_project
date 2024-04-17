@@ -43,6 +43,13 @@ const HeaderBox = styled.header`
       height: 150px;
       align-items: center;
 
+      .logo {
+        img {
+          height: 100px;
+          margin-left: 75px;
+        }
+      }
+
       form {
         display: flex;
         height: 45px;
@@ -93,7 +100,7 @@ const Header = () => {
       </section>
       <section className="logo-search">
         <div className="layout-width">
-          <Link to="/">
+          <Link to="/" className="logo">
             <img src={logo} alt={t('로고')} />
           </Link>
 

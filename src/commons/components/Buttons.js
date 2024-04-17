@@ -1,4 +1,4 @@
-import React from 'react';
+import React1 from 'react';
 import styled, { css } from 'styled-components';
 import { buttonColor } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
