@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { useNavigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import JoinForm from '../components/JoinForm';
 
@@ -14,7 +14,7 @@ const JoinContainer = () => {
 
   const { t } = useTranslation();
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   /**
    * 회원 가입 처리
@@ -45,8 +45,11 @@ const JoinContainer = () => {
       };
 
       for (const [field, msg] of Object.entries(requiredFields)) {
-        // !form[field] - null, undefined, '' 체크, !form[field].trim() - '    '
-        if (!form[field] || (form[field] && !form[field].trim())) {
+        // !form[field] - null, undefined, '' 체크, !form[field].trim() //  - '    '
+        if (
+          !form[field] ||
+          (typeof form[field] === 'string' && !form[field].trim())
+        ) {
           _errors[field] = _errors[field] || [];
           _errors[field].push(msg);
           hasErrors = true;
@@ -55,7 +58,7 @@ const JoinContainer = () => {
 
       /* 데이터 검증 - 필수 항목 체크 E */
 
-      // 데이터 검증 - 비밀번호와 비밀번호 확인 일치 여부
+      /* 데이터 검증 - 비밀번호와 비밀번호 확인 일치 여부 */
       if (
         form.password &&
         form.confirmPassword &&
@@ -69,16 +72,16 @@ const JoinContainer = () => {
       setErrors(_errors);
 
       if (hasErrors) {
-        // 검증 실패시 가입처리 X
+        // 검증 실패시 가입 처리 X
         return;
       }
 
-      // 가입처리
+      /* 가입처리 */
 
-      // 가입완료 후 로그인 페이지 이동
-      navigator('/member/login', { replace: true });
+      /* 가입완료 후 로그인 페이지 이동 */
+      navigate('/member/login', { replace: true }); // replace: true -> 방문기록 X
     },
-    [t, form],
+    [t, form, navigate],
   );
 
   const onChange = useCallback((e) => {
